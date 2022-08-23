@@ -2,7 +2,7 @@
 # libgen_Automation
 A simple demonstration of browser automation using Selenium in Java
 
-Consider the license to be GPL.
+GNU GENERAL PUBLIC LICENSE
 
 Please note before using this project that not all of the books and articles on LibGen.fun will be public domain. I am by no means advocating the piracy of copyright materials. This project is a demonstration only.
 If you run this project or decide to add to it, you will probably want to change the key terms it searches with. I would suggest routing this as a parameter through the main method.
