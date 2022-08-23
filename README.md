@@ -4,7 +4,9 @@ A simple demonstration of browser automation using Selenium in Java
 
 GNU GENERAL PUBLIC LICENSE
 
-Please note before using this project that not all of the books and articles on LibGen.fun will be public domain. I am by no means advocating the piracy of copyright materials. This project is a demonstration only.
+Please note before using this project that not all of the books and articles on LibGen.fun will be public domain. I am by no means advocating the piracy of copyright materials. This project is a demonstration only. It effectively shows not only automation but also potentially overlooked security concerns with modern web app development. Projects like these aren't overly difficult. Automation programming really isn't limmited to web applications either. Linux terminals and Windows command prompt can be managed similarly.
+
+The possibilities are boundless. Tech support workers can use this type of technology to streamline their maintenance tasks. Large tech companies are always in need of quality assurance and penetration testing on their own apps. The more diversified the individual, the more they will realize can be automated. Even in jobs nobody would ever really expect, like payroll, data entry, customer service and ticketing systems... One of the things I have been looking into doing is the full automation of a drop shipping company right down to the filing of taxes. However, I am the type that just has way too much fun with these things.
 
 If you run this project or decide to add to it, you will probably want to change the key terms it searches with. I would suggest routing this as a parameter through the main method.
 
