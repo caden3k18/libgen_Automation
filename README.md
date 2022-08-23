@@ -9,6 +9,7 @@ Please note before using this project that not all of the books and articles on 
 If you run this project or decide to add to it, you will probably want to change the key terms it searches with. I would suggest routing this as a parameter through the main method.
 
 What It Does…
+
 This is a fairly simple demonstration of browser/web app automation. It opens up Chrome and navigates to http://LibGen.fun, appending the query into the URL.
 
 The first thing to take place is a collection of page results as URLs, this is used to get ALL of the books in a given search result.
@@ -20,7 +21,7 @@ The roundabout methodology of this site makes it a fairly ideal candidate to sho
 
 After each download, the next link in the list is processed. Once all of the links on a given page are done, it will continue like this through each of the page results.
 
-My internet access is awful at the moment as I am preparing to relocate. As such, I haven’t actually fully tested the entire process. I just made sure that the first few links were working as intended.
+My internet access is awful at the moment as I am preparing to relocate. As such, I haven’t fully tested the entire process. I just made sure that the first few links were working as intended.
 
 There are some other things I would like to add when I have more time.
 
@@ -29,7 +30,7 @@ I would also like to modify the project to support and distinguish between resea
 
 Why the interest in books and articles?
 
-I have actually done a whole lot of natural language processing with prior projects. I tend to do a lot of web craping/crawling and browser automation to target highly specific details for graph data and semantic analyses.
+I have actually done a whole lot of natural language processing with prior projects. I tend to do a lot of web scraping/crawling and browser automation to target highly specific details for graph data and semantic analyses.
 
 As such, I may be uploading things like this on a regular basis if people show interest.
 
