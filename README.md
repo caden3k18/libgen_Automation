@@ -23,6 +23,8 @@ The roundabout methodology of this site makes it a fairly ideal candidate to sho
 
 After each download, the next link in the list is processed. Once all of the links on a given page are done, it will continue like this through each of the page results.
 
+An automation process for Project Gutenberg has also been added with a few minor changes to the approach.
+
 My internet access is awful at the moment as I am preparing to relocate. As such, I haven’t fully tested the entire process. I just made sure that the first few links were working as intended.
 
 There are some other things I would like to add when I have more time.
