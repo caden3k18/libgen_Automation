@@ -1,3 +1,15 @@
+/**
+ * Before running this code, you must be aware that while LibGen does contain public domain books
+ * that are uncontested for downloading, a lot of them won't be. Running this without specific parameters
+ * will result in piracy. That is NOT what this app is intended for.
+ *
+ * I advocate for all the autodidacts out there to learn freely and unrestrained.
+ *
+ * It is important to cknowledge the terms and conditions of any given website.
+ * Use this only if you know how to target the files you are legally entitled to!
+ *
+ * Failure to modify the code to target specific books will result in processing every table of every page...
+ */
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +22,11 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.*;
 
+
 public class LibGen {
+
+    Utilities ut = new Utilities();
+
 
     FileWriter historyFile = null;
     int previous = 1;
@@ -28,14 +44,8 @@ public class LibGen {
 
         try {
 
-            //Establish the WebDriver
-            System.setProperty("webdriver.chrome.driver","C:\\Users\\etern\\IdeaProjects\\libgen_Automation\\src\\main\\resources\\chromedriver_win32\\chromedriver.exe");
-            ChromeOptions options = new ChromeOptions();
-            //options.addArguments("--headless", "--window-size=2736,1824"); - Headless just hides the browser - no real need for that here
-            options.addArguments("--window-size=2736,1824"); // May need to adjust resolution for your own screen
-            WebDriver driver = new ChromeDriver(options);
+            WebDriver driver = ut.EstablishWebDriver();
 
-            driver.manage().window().maximize();
             String baseUrl = "https://libgen.fun/search.php?req=" + search;
             driver.get(baseUrl);
 
@@ -79,10 +89,6 @@ public class LibGen {
             }
 
 
-
-
-
-
             System.out.println("Shutting down the web driver!");
             driver.close();
 
@@ -94,18 +100,6 @@ public class LibGen {
     }
 
 
-    public static String switchTab(WebDriver driver, int tab) {
-
-        /*
-        We need the window handle and the tab number to effectively transition between the tabs
-        without interrupting the loop.
-         */
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        String handleName = tabs.get(tab);
-        driver.switchTo().window(handleName);
-        System.setProperty("current.window.handle", handleName);
-        return handleName;
-    }
 
 
    public void table2(WebDriver driver) {
@@ -135,8 +129,6 @@ public class LibGen {
                } else if (temp.length() >  1){
                    //Document the text of each element. It's in a table, so parsing from the txt later by Col[x] will be easy.
 
-                   //System.out.println("Comparing : " + temp + " to " + "(Title|Author\\(s\\)|Publisher|Pages|ISBN|Download|Size)");
-
                    if (temp.matches("(Title|Author\\(s\\)|Publisher|Pages|ISBN|Download|Size)\\:")) {
                        previous++;
                        System.out.println(previous);
@@ -152,7 +144,7 @@ public class LibGen {
            }
 
        }
-           //We have a full data for this book now, so append a new line to the text file.
+           //We have written the full data for this book now, so append a new line to the text file.
            writeBookInfo("\n");
 
 
@@ -194,7 +186,7 @@ public class LibGen {
                                    cell.findElement(By.cssSelector("a.simplebooktitle")).sendKeys(clicklnk);
 
                                    //Switch to the new tab
-                                   switchTab(driver, 1);
+                                   ut.switchTab(driver, 1);
                                    Thread.sleep(5000);
                                    //Go through this new table to get book links.
                                    table2(driver);
@@ -204,6 +196,8 @@ public class LibGen {
                                    Thread.sleep(5000);
                                    //The file DL is a bit weird, it saves to a buffer, so we fetch the result.
                                    driver.findElement(By.id("download-button")).click();
+
+                                   //Give time for the download
                                    var waitForDl = new WebDriverWait(driver, Duration.ofMinutes(5));
                                    var clickableElement = waitForDl.until(ExpectedConditions.elementToBeClickable(By.id("save-file")));
 
@@ -211,16 +205,14 @@ public class LibGen {
 
                                    //We got what we came for, let's close that tab and get the next one in the loop!
                                    driver.close();
-                                   switchTab(driver, 0);
+                                   ut.switchTab(driver, 0);
 
                                }
                            } catch(Exception e){
 
                            }
 
-                           //Document the text of each element. It's in a table, so parsing from the txt later by Col[x] will be easy.
-                           // writeBookInfo(temp.concat("|"));
-                           //  System.out.println("Book Data 1: " + cell.getText().concat("|"));
+
                            charCount += cell.getText().length();
                        }
 
