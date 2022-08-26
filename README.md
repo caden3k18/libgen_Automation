@@ -3,7 +3,7 @@
 
 
 ------------------------------------------------------
-TLDR - Summary: 
+TL;DR - Summary: 
 A simple demonstration of browser automation and general programming concepts on three different websites using Selenium in Java. Libgen.fun, Open Library and Project Gutenberg are all included.
 ------------------------------------------------------
 
@@ -26,9 +26,9 @@ What It Does…
 This is a fairly simple demonstration of browser/web app automation. It opens up Chrome and navigates to each site individually, injecting the query into the URL.
 
 The first thing to take place is a collection of page results as URLs, this is used to get ALL of the books in a given search result.
-Once the query loads, it iterates through a table or Div elements and performs a click event on each of the book links. This loads another page with the specific details about the author, ISBN, page count, publisher and more. Those details are collected into a text file delimited by “|”. This may seem odd but a lot of the titles and author fields have commas in them.
+Once the query loads, it iterates through a table or Div elements and performs a click event on each of the book links. This loads another page with the specific details about the author, ISBN, page count, publisher and more. Those details are collected into a text file delimited by “|”. This may seem odd but a lot of the titles and author fields have commas in them. Regular expressions are used to extract and clean the data.
 
-Libgen does something rather different with downloads. They seem to go into a buffer rather than download directly to your hard drive with one click. Additionally, a textfile is updated with the details of each book as they are processed. In some cases, this requires a bit of string manipulation and regular expressions.
+Libgen does something rather different with downloads. They seem to go into a buffer rather than download directly to your hard drive with one click.
 
 The roundabout methodology of libgen.fun makes it a fairly ideal candidate to show off browser automation for web apps.
 
