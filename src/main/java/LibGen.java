@@ -5,15 +5,13 @@
  *
  * I advocate for all the autodidacts out there to learn freely and unrestrained.
  *
- * It is important to cknowledge the terms and conditions of any given website.
+ * It is important to acknowledge the terms and conditions of any given website.
  * Use this only if you know how to target the files you are legally entitled to!
  *
  * Failure to modify the code to target specific books will result in processing every table of every page...
  */
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

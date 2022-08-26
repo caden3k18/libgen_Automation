@@ -10,7 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.io.FileWriter;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -93,8 +92,10 @@ public class ProjectGutenBerg {
 
         try {
 
-            table1(driver);
+            //Get the data first, then download the file...
             table2(driver);
+            table1(driver);
+
 
             Thread.sleep(5000);
 
@@ -160,24 +161,31 @@ public class ProjectGutenBerg {
 
         List<WebElement> elements = tbl.findElements(By.tagName("tr"));
 
+        try {
+
+           String temp = "";
+
         for (WebElement row : elements) {
 
-            List<WebElement> cells = row.findElements(By.tagName("td"));
+                    if (row.getText().contains("Title") || row.getText().contains("Author")) {
 
-            for (WebElement cell : cells) {
+                        System.out.println("Book Data1: " + row.getText().concat("|"));
+                        temp = temp + (row.getText().replace("\n", " ~ ").replace
+                                ("Title ", "").replace("Author ", "").concat("|"));
+                    }
 
-                if (temp.contains("Title") || temp.contains("Author")) {
-
-                    System.out.println("Book Data: " + cell.getText().concat("|"));
-                    ut.writeInfo("ProjectGutenberg.txt", cell.getText().concat("|"));
                 }
 
-                temp = cell.getText();
+                if (!temp.isBlank()){
+                    ut.writeInfo("Project_Gutenberg_History.txt", temp + "\n");
+                    temp = "";
+                }
 
 
-            }
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
 
